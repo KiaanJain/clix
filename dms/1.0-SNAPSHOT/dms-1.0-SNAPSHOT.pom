@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>capital.clix</groupId>
+  <artifactId>dms</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>document-manager</name>
+  <description>For saving and retrieving documents</description>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.0.5.RELEASE</version>
+  </parent>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>1.8</java.version>
+    <mysql.connector.version>5.1.46</mysql.connector.version>
+    <protostuff.version>1.1.3</protostuff.version>
+  </properties>
+
+
+  <modules>
+    <module>base</module>
+    <module>client</module>
+    <module>boot</module>
+    <module>core</module>
+    <module>api</module>
+    <module>uplink</module>
+    <module>downlink</module>
+    <module>web</module>
+  </modules>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysql.connector.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.amazonaws</groupId>
+        <artifactId>aws-java-sdk-bom</artifactId>
+        <version>1.11.306</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+
+    <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-vfs2-project -->
+    <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-vfs2 -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-vfs2</artifactId>
+      <version>2.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-freemarker</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>com.zaxxer</groupId>
+      <artifactId>HikariCP</artifactId>
+      <version>2.7.8</version>
+    </dependency>
+
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+    </dependency>
+
+    <!-- Vault -->
+    <dependency>
+      <groupId>com.bettercloud</groupId>
+      <artifactId>vault-java-driver</artifactId>
+      <version>3.1.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.amazonaws</groupId>
+      <artifactId>aws-java-sdk-s3</artifactId>
+    </dependency>
+
+    <!-- for SFTP -->
+    <dependency>
+      <groupId>com.jcraft</groupId>
+      <artifactId>jsch</artifactId>
+      <version>0.1.54</version>
+    </dependency>
+
+    <dependency>
+      <groupId>capital.clix</groupId>
+      <artifactId>uuid-generator</artifactId>
+      <version>1.3-SNAPSHOT</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-parent</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>capital.clix</groupId>
+      <artifactId>balrog</artifactId>
+      <version>1.9-SNAPSHOT</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-parent</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>capital.clix</groupId>
+      <artifactId>mercury</artifactId>
+      <version>1.3-SNAPSHOT</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-parent</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.jimfs</groupId>
+      <artifactId>jimfs</artifactId>
+      <version>1.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>omnidocs</groupId>
+      <artifactId>upload</artifactId>
+      <version>1.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>omnidocs</groupId>
+      <artifactId>ispack</artifactId>
+      <version>1.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>omnidocs</groupId>
+      <artifactId>wfdesktop</artifactId>
+      <version>1,0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>omnidocs</groupId>
+      <artifactId>jdts</artifactId>
+      <version>1.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>omnidocs</groupId>
+      <artifactId>nsms</artifactId>
+      <version>1.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>omnidocs</groupId>
+      <artifactId>niplj</artifactId>
+      <version>1.0</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage -->
+    <dependency>
+      <groupId>com.microsoft.azure</groupId>
+      <artifactId>azure-storage</artifactId>
+      <version>5.0.0</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-all -->
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest-all</artifactId>
+      <version>1.3</version>
+      <scope>test</scope>
+    </dependency>
+
+
+    <!--aerospike dependency -->
+    <dependency>
+      <groupId>com.aerospike</groupId>
+      <artifactId>aerospike-client</artifactId>
+      <version>4.1.7</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.lowagie/itext -->
+    <dependency>
+      <groupId>com.lowagie</groupId>
+      <artifactId>itext</artifactId>
+      <version>2.1.5</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/log4j/log4j -->
+    <!--<dependency>-->
+      <!--<groupId>log4j</groupId>-->
+      <!--<artifactId>log4j</artifactId>-->
+      <!--<version>1.2.14</version>-->
+    <!--</dependency>-->
+
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>2.10.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-1.2-api</artifactId>
+      <version>2.10.0</version>
+    </dependency>
+
+  </dependencies>
+
+</project>

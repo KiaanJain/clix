@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Jun 18 17:36:58 IST 2019
+dms-base-1.6-SNAPSHOT.jar>=
+dms-base-1.6-SNAPSHOT.pom>=
+dms-base-1.6-SNAPSHOT-sources.jar>=
